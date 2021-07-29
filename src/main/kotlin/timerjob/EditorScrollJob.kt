@@ -41,7 +41,7 @@ class EditorScrollJob() : ITimerJob {
 
         if ( afterScrollOffsetY <= beforeScrollOffsetY ) {
             println(timer.actionListeners.size)
-            println("END")
+
             timer.stop()
         }
     }
