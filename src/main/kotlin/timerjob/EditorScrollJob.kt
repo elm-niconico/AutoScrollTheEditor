@@ -1,15 +1,14 @@
 package timerjob
 
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.CommonDataKeys
-import com.intellij.openapi.editor.CaretActionListener
 import com.intellij.openapi.editor.Editor
 import scroller.SimpleEditorScroller
+import settingsState.SettingsState
 import javax.swing.Timer
 
 
 class EditorScrollJob() : ITimerJob {
-    private val timer = Timer(100,null)
+    private val config = SettingsState.SettingState.getInstance()
+    private val timer = Timer(config.scrollDelay.toInt(),null)
     private lateinit var actionEvent: Editor
 
     init {
@@ -36,7 +35,7 @@ class EditorScrollJob() : ITimerJob {
 
         val sm = editor.scrollingModel
         val beforeScrollOffsetY = sm.verticalScrollOffset
-        val scroller = SimpleEditorScroller(1)
+        val scroller = SimpleEditorScroller(config.scrollOffsetY.toInt())
         val afterScrollOffsetY = scroller.scrollEditor(sm)
 
         if ( afterScrollOffsetY <= beforeScrollOffsetY ) {

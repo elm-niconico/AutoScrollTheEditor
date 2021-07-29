@@ -3,9 +3,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.editor.Editor
 import timerjob.EditorScrollJob
-import java.awt.event.ActionEvent
-import java.util.*
-import javax.swing.Timer
+
+
 
 class EditorAction : AnAction() {
     private val timerJob = EditorScrollJob()
